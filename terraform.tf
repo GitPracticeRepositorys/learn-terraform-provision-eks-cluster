@@ -1,14 +1,4 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 terraform {
-
-  TF_CLOUD_ORGANIZATION {
-    workspaces {
-      name = "learn-terraform-eks"
-    }
-  }
-
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -33,4 +23,15 @@ terraform {
 
   required_version = "~> 1.3"
 }
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+}
+
+# Add more resources and modules as needed...
 
